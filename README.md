@@ -1,6 +1,6 @@
 # Water My Plants API
 
-Hosted Backend URL:
+Hosted Backend URL: https://water-my-plantz.herokuapp.com
 
 Endpoints that require an authorization token:
 
