@@ -11,10 +11,10 @@ Headers:
 
 ## Authentication
 
-| Method | Endpoint       | Requirements              |                    |
-| ------ | -------------- | ------------------------- | ------------------ |
-| POST   | /auth/register | email, username, password | Creates a new user |
-| POST   | /auth/login    | username, password        | Logs in users      |
+| Method | Endpoint       | Requirements              |                       |
+| ------ | -------------- | ------------------------- | --------------------- |
+| POST   | /auth/register | username, password, phone | Creates a new user ✅ |
+| POST   | /auth/login    | username, password        | Logs in users         |
 
 ## Users
 
@@ -23,7 +23,7 @@ Headers:
 | GET    | /api/users            |                           | Returns all users                |
 | GET    | /api/users/:id        |                           | Returns user object by id        |
 | GET    | /api/users/:id/plants |                           | Returns user's plants by user id |
-| PUT    | /api/users/:id        | email, username, password | Updates the user info by user id |
+| PUT    | /api/users/:id        | username, password, phone | Updates the user info by user id |
 | DELETE | /api/users/:id        |                           | Deletes the user by user id      |
 
 ## Plants
