@@ -1,19 +1,19 @@
 exports.up = async (knex) => {
   await knex.schema
     .createTable("users", (users) => {
-      users.increments("user_id");
+      users.increments();
       users.string("username", 200).notNullable();
       users.string("password", 200).notNullable();
       users.string("phoneNumber").notNullable();
       users.timestamps(false, true);
     })
     .createTable("plants", (plant) => {
-      plant.increments("plant_id");
+      plant.increments();
       plant
-        .integer("userID")
+        .integer("user_id")
         .unsigned()
         // .notNullable()
-        .references("users_id")
+        .references("users.id")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
       plant.string("nickname").notNullable();

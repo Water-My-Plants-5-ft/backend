@@ -24,6 +24,8 @@ server.use(cors());
 //   res.status(201).json(await insertUser(req.body))
 // })
 const authRouter = require("./auth/auth-router");
+const userRouter = require("./users/users-router");
+const plantRouter = require("./plants/plants-router");
 
 server.get("/", (req, res) => {
   res.status(200).json({
@@ -38,6 +40,8 @@ server.get("/api", (req, res) => {
 });
 
 server.use("/api/auth", authRouter);
+server.use("/api/users", userRouter);
+server.use("/api/plants", plantRouter);
 
 //error middleware
 server.use((err, req, res) => {
