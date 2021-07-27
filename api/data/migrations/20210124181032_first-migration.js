@@ -1,27 +1,27 @@
-exports.up = async (knex) => {
-  await knex.schema
-    .createTable("users", (users) => {
-      users.increments();
-      users.string("username", 200).notNullable();
-      users.string("password", 200).notNullable();
-      users.string("phoneNumber").notNullable();
-      users.timestamps(false, true);
+exports.up = function (knex) {
+  return knex.schema
+    .createTable("users", (tbl) => {
+      tbl.increments();
+      tbl.string("username", 160).unique().notNullable().index();
+      tbl.string("password", 256).notNullable();
+      tbl.string("phone_number", 15).notNullable();
     })
-    .createTable("plants", (plant) => {
-      plant.increments();
-      plant
+    .createTable("plants", (tbl) => {
+      tbl.increments();
+      tbl.string("nickname", 256).notNullable();
+      tbl.string("species", 256).notNullable();
+      tbl.string("h2o_frequency", 120).notNullable();
+      tbl.string("img_url", 999);
+      tbl
         .integer("user_id")
         .unsigned()
-        // .notNullable()
+        .notNullable()
         .references("users.id")
         .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
-      plant.string("nickname").notNullable();
-      plant.string("species").notNullable();
-      plant.string("h2o_frequency").notNullable();
+        .onDelete("CASCADE");
     });
 };
 
-exports.down = async (knex) => {
-  await knex.schema.dropTableIfExists("plants").dropTableIfExists("users");
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists("plants").dropTableIfExists("users");
 };

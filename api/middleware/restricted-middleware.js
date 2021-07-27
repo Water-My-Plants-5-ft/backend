@@ -18,7 +18,8 @@ module.exports = (req, res, next) => {
     });
   } else {
     res.status(401).json({
-      message: "You must be logged in to access this data",
+      message:
+        "You must be logged in to access this data, please provide token",
     });
   }
 };

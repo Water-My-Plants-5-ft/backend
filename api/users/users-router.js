@@ -1,11 +1,7 @@
 const router = require("express").Router();
-
 const bcrypt = require("bcryptjs");
-
 const Users = require("./users-model.js");
-
-const Plants = require("../plants/plants-model");
-
+const Plants = require("../plants/plants-model.js");
 const { validateUserID, validatePlant } = require("../middleware/middleware");
 
 router.get("/", (req, res) => {
@@ -93,7 +89,7 @@ router.put("/:id", validateUserID, (req, res) => {
 
 router.delete("/:id", validateUserID, (req, res) => {
   Users.remove(req.params.id)
-    .then(() =>
+    .then((removed) =>
       res
         .status(200)
         .json({ message: `User with ID ${req.params.id} has been deleted` })
@@ -105,5 +101,33 @@ router.delete("/:id", validateUserID, (req, res) => {
       });
     });
 });
+
+// =============== MIDDLEWARE ===============
+
+// function validateID(req, res, next) {
+//   Users.findByID(req.params.id).then((user) => {
+//     if (!user) {
+//       res.status(400).json({ message: "Invalid User ID" });
+//     } else {
+//       next();
+//     }
+//   });
+// }
+
+// function validatePlant(req, res, next) {
+//   if (Object.keys(req.body).length === 0) {
+//     res.status(401).json({ message: "No Plant Data provided" });
+//   } else if (
+//     !req.body.nickname ||
+//     !req.body.species ||
+//     !req.body.h2o_frequency
+//   ) {
+//     res.status(401).json({
+//       message: "Nickname, Species, and H20 Frequency are ALL REQUIRED!",
+//     });
+//   } else {
+//     next();
+//   }
+// }
 
 module.exports = router;
