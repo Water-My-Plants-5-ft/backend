@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports = function generateToken(user) {
   const payload = {
-    subject: user.user_id,
+    subject: user.id,
     username: user.username,
-    phoneNumber: user.phone,
+    phoneNumber: user.phoneNumber,
   };
 
   const options = {
