@@ -7,6 +7,7 @@ module.exports = {
   update,
   remove,
 };
+
 function find() {
   return db("plants")
     .select("id", "species", "h2o_frequency", "img_url")

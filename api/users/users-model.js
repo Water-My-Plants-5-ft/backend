@@ -12,13 +12,13 @@ module.exports = {
 
 function find() {
   return db("users")
-    .select("users.id", "users.username", "users.phoneNumber")
+    .select("users.id", "users.username", "users.phone_number")
     .orderBy("users.id");
 }
 
 function findByID(id) {
   return db("users")
-    .select("users.id", "users.username", "users.phoneNumber")
+    .select("users.id", "users.username", "users.phone_number")
     .where({ id: id })
     .first();
 }
@@ -61,7 +61,12 @@ function remove(id) {
 
 function login(username) {
   return db("users")
-    .select("users.id", "users.username", "users.phoneNumber", "users.password")
+    .select(
+      "users.id",
+      "users.username",
+      "users.phone_number",
+      "users.password"
+    )
     .where({ username: username })
     .first();
 }
