@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     jwt.verify(token, secret, (err) => {
       if (err) {
         res.status(400).json({
-          message: "Access denied",
+          message: "Invalid Token",
         });
       } else {
         next();
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
     });
   } else {
     res.status(401).json({
-      message: "Please provide your credentials",
+      message: "You must be logged in to access this data",
     });
   }
 };
