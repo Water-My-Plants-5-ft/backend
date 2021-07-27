@@ -9,9 +9,7 @@ module.exports = {
 };
 
 function find() {
-  return db("plants")
-    .select("id", "species", "h2o_frequency", "img_url")
-    .orderBy("id");
+  return db("plants").orderBy("id");
 }
 
 function findByID(id) {
