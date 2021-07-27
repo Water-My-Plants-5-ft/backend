@@ -93,7 +93,7 @@ router.put("/:id", validateUserID, (req, res) => {
 
 router.delete("/:id", validateUserID, (req, res) => {
   Users.remove(req.params.id)
-    .then((removed) =>
+    .then(() =>
       res
         .status(200)
         .json({ message: `User with ID ${req.params.id} has been deleted` })

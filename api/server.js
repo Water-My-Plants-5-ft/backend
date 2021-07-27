@@ -41,7 +41,7 @@ server.get("/api", (req, res) => {
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
-server.use("/api/plants", userRouter);
+server.use("/api/plants", plantRouter);
 
 //error middleware
 server.use((err, req, res) => {
