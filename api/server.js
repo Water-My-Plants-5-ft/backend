@@ -2,7 +2,6 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 // const db = require('./data/db-config')
-
 const server = express();
 server.use(express.json());
 server.use(helmet());
@@ -24,12 +23,21 @@ server.use(cors());
 // server.post('/api/users', async (req, res) => {
 //   res.status(201).json(await insertUser(req.body))
 // })
+const authRouter = require("./auth/auth-router");
 
 server.get("/", (req, res) => {
   res.status(200).json({
     api: "Running Successfully!",
   });
 });
+
+server.get("/api", (req, res) => {
+  res.status(200).json({
+    api: "Welcome to my API",
+  });
+});
+
+server.use("/api/auth", authRouter);
 
 //error middleware
 server.use((err, req, res) => {

@@ -7,25 +7,25 @@ exports.seed = function (knex) {
           id: 1,
           username: "joe",
           password: "joe",
-          phone: "344-334-5324",
+          phoneNumber: "344-334-5324",
         },
         {
           id: 2,
           username: "bobby",
           password: "bobby",
-          phone: "655-444-4444",
+          phoneNumber: "655-444-4444",
         },
         {
           id: 3,
           username: "frank",
           password: "frank",
-          phone: "564-345-2345",
+          phoneNumber: "564-345-2345",
         },
         {
           id: 4,
           username: "mynameis",
           password: "mynameis",
-          phone: "456-734-4465",
+          phoneNumber: "456-734-4465",
         },
       ]);
     });

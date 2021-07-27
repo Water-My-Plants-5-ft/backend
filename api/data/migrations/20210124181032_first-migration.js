@@ -4,11 +4,11 @@ exports.up = async (knex) => {
       users.increments("user_id");
       users.string("username", 200).notNullable();
       users.string("password", 200).notNullable();
-      users.string("phone").notNullable();
+      users.string("phoneNumber").notNullable();
       users.timestamps(false, true);
     })
     .createTable("plants", (plant) => {
-      plant.increments();
+      plant.increments("plant_id");
       plant
         .integer("userID")
         .unsigned()
